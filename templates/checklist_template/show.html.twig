@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ChecklistTemplate{% endblock %}
+
+{% block body %}
+    <h1>ChecklistTemplate</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ checklist_template.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ checklist_template.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ checklist_template.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_checklist_template_index') }}">back to list</a>
+
+    <a href="{{ path('app_checklist_template_edit', {'id': checklist_template.id}) }}">edit</a>
+
+    {{ include('checklist_template/_delete_form.html.twig') }}
+{% endblock %}

@@ -25,7 +25,7 @@ class ChecklistTemplate
     /**
      * @var Collection<int, ChecklistItemTemplate>
      */
-    #[ORM\OneToMany(targetEntity: ChecklistItemTemplate::class, mappedBy: 'checklistTemplate', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: ChecklistItemTemplate::class, mappedBy: 'checklistTemplate', orphanRemoval: true, cascade: ["persist", "remove"])]
     private Collection $items;
 
     /**

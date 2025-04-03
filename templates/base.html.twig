@@ -10,6 +10,8 @@
 
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
+            <!-- Ajout de Sortable.js depuis CDN -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
         {% endblock %}
     </head>
     <body>

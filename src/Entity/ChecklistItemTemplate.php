@@ -17,7 +17,7 @@ class ChecklistItemTemplate
     private ?string $label = null;
 
     #[ORM\Column]
-    private ?bool $isRequired = null;
+    private ?bool $isRequired = false;
 
     #[ORM\Column]
     private ?int $position = null;
