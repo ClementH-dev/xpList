@@ -30,9 +30,16 @@ class ProjectChecklist
     #[ORM\ManyToMany(targetEntity: ChecklistTemplate::class, inversedBy: 'projectChecklists')]
     private Collection $template;
 
+    /**
+     * @var Collection<int, ProjectChecklistItem>
+     */
+    #[ORM\OneToMany(targetEntity: ProjectChecklistItem::class, mappedBy: 'project', orphanRemoval: true)]
+    private Collection $projectChecklistItems;
+
     public function __construct()
     {
         $this->template = new ArrayCollection();
+        $this->projectChecklistItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,6 +103,36 @@ class ProjectChecklist
     public function removeTemplate(ChecklistTemplate $template): static
     {
         $this->template->removeElement($template);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProjectChecklistItem>
+     */
+    public function getProjectChecklistItems(): Collection
+    {
+        return $this->projectChecklistItems;
+    }
+
+    public function addProjectChecklistItem(ProjectChecklistItem $projectChecklistItem): static
+    {
+        if (!$this->projectChecklistItems->contains($projectChecklistItem)) {
+            $this->projectChecklistItems->add($projectChecklistItem);
+            $projectChecklistItem->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjectChecklistItem(ProjectChecklistItem $projectChecklistItem): static
+    {
+        if ($this->projectChecklistItems->removeElement($projectChecklistItem)) {
+            // set the owning side to null (unless already changed)
+            if ($projectChecklistItem->getProject() === $this) {
+                $projectChecklistItem->setProject(null);
+            }
+        }
 
         return $this;
     }
