@@ -39,6 +39,7 @@ final class ChecklistTemplateController extends AbstractController
         return $this->render('checklist_template/new.html.twig', [
             'checklist_template' => $checklistTemplate,
             'form' => $form,
+            'deleteButton' => false,
         ]);
     }
 
@@ -65,6 +66,7 @@ final class ChecklistTemplateController extends AbstractController
         return $this->render('checklist_template/edit.html.twig', [
             'checklist_template' => $checklistTemplate,
             'form' => $form,
+            'deleteButton' => true,
         ]);
     }
 
