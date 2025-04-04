@@ -3,7 +3,11 @@
 {% block title %}New ChecklistTemplate{% endblock %}
 
 {% block body %}
-    <h1>Create new ChecklistTemplate</h1>
+<div class="max-w-4xl mx-auto p-6 bg-gray-200 rounded-xl shadow-md mt-10">
+    <h1 class="text-3xl font-bold mb-6 text-center">Create new ChecklistTemplate</h1>
 
-    {{ include('checklist_template/_form.html.twig') }}
+    <div class="space-y-4">
+          {{ include('checklist_template/_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}
